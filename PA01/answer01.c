@@ -139,5 +139,18 @@ int countNegative(int * array, int length)
 */
 int isIncreasing(int * array, int length)
 {
-    return 0;
+ int increasing = 1;
+ int inccount = 0;
+
+ while ((inccount < length) & (increasing != 0))
+ {
+  if (array[inccount] < array[inccount + 1])
+  {
+   increasing = 0;
+  }
+  
+  inccount++;
+
+ }
+    return increasing;
 }
