@@ -47,14 +47,13 @@ int sum = 0; /*holds sum of array elements */
 
 int addElement(int * array, int length)
 {
- while (addcount < length-1)
+ while (addcount < length)
   {
   sum = sum + array[addcount];
+  addcount++;
   }
  
- printf("The sum of the elements of the array is ");
-
-    return 0;
+    return sum;
 }
 /*
  * =================================================================
@@ -80,7 +79,19 @@ int addElement(int * array, int length)
 */
 int countNegative(int * array, int length)
 {
-    return 0;
+ int negnumbers = 0;
+ int negcount = 0;
+ 
+ while (negcount < length)
+ {
+  if (array[negcount] < 0)
+  {
+   negnumbers++;
+  }
+  
+  negcount++;
+ }
+    return negnumbers;
 }
 /*
  * =================================================================
