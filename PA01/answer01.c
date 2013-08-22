@@ -47,13 +47,13 @@ int sum = 0; /*holds sum of array elements */
 
 int addElement(int * array, int length)
 {
- while (addcount < length)
-  {
-  sum = sum + array[addcount];
-  addcount++;
-  }
+  while (addcount < length)
+    {
+      sum = sum + array[addcount];
+      addcount++;
+    }
  
-    return sum;
+  return sum;
 }
 /*
  * =================================================================
@@ -79,19 +79,19 @@ int addElement(int * array, int length)
 */
 int countNegative(int * array, int length)
 {
- int negnumbers = 0;
- int negcount = 0;
+  int negnumbers = 0;
+  int negcount = 0;
  
- while (negcount < length)
- {
-  if (array[negcount] < 0)
-  {
-   negnumbers++;
-  }
+  while (negcount < length)
+    {
+      if (array[negcount] < 0)
+	{
+	  negnumbers++;
+	}
   
-  negcount++;
- }
-    return negnumbers;
+      negcount++;
+    }
+  return negnumbers;
 }
 /*
  * =================================================================
@@ -139,18 +139,18 @@ int countNegative(int * array, int length)
 */
 int isIncreasing(int * array, int length)
 {
- int increasing = 1;
- int inccount = 0;
+  int increasing = 1;
+  int inccount = 0;
 
- while ((inccount < length) & (increasing != 0))
- {
-  if (array[inccount] < array[inccount + 1])
-  {
-   increasing = 0;
-  }
+  while ((inccount < length - 1) & (increasing != 0))
+    {
+      if (array[inccount] > array[inccount+1])
+	{
+	  increasing = 0;
+	}
   
-  inccount++;
+      inccount++;
 
- }
+    }
     return increasing;
 }
