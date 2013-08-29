@@ -9,7 +9,12 @@
  */
 int my_strlen(const char * s)
 {
-    return 0;
+  int count;
+  for (count = 0; s[count] != '\0'; count++)
+    {
+    }
+
+  return count;
 }
 
 /**
@@ -20,7 +25,16 @@ int my_strlen(const char * s)
  */
 int my_countchar(const char * s, char c)
 {
-    return 0;
+  int count;
+  int countchar = 0;
+  for (count = 0; s[count] != '\0'; count++)
+    {
+      if (s[count] == c)
+	{
+	  countchar++;
+	}
+    }
+    return countchar;
 }
 
 /**
@@ -34,7 +48,11 @@ int my_countchar(const char * s, char c)
  */
 void my_strupper(char * s)
 {
-
+  int count;
+  for (count = 0; s[count] != '\0'; count++)
+    {
+     s[count] = toupper(s[count]);
+    }
 }
 
 /**
