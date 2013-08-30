@@ -183,16 +183,17 @@ const char *my_strstr(const char * s1, const char * s2)
     {
     }
   pointer = count1;
+
   for(count2 = 0; s2[count2] != '\0'; count2++)
     {
-      if(s1[count1 - 1] != s2[count2])
+      if(s1[count1] != s2[count2])
 	{
 	  return NULL;
 	}
       count1++;
     }
 
-  return &pointer;
+  return &s1[pointer];
 }
 
 
