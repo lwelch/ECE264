@@ -66,7 +66,11 @@ void my_strupper(char * s)
  */
 void my_strlower(char * s)
 {
-
+  int count;
+  for (count = 0; s[count] != '\0'; count++)
+    {
+     s[count] = tolower(s[count]);
+    }
 }
 
 /**
@@ -81,6 +85,12 @@ void my_strlower(char * s)
  */
 void my_strcpy(char * s1, const char * s2)
 {
+  int count;
+  for (count = 0; s2[count] != '\0'; count++)
+    {
+      s1[count]=s2[count];
+    }
+  s1[count]='\0';
 
 }
 
@@ -96,7 +106,13 @@ void my_strcpy(char * s1, const char * s2)
  */
 void my_strncpy(char * s1, const char * s2, int num)
 {
-    
+  int count;
+  for (count = 0; count < num; count++)
+    {
+      s1[count]=s2[count];
+    }
+  s1[count]='\0';
+   
 }
 
 
@@ -111,7 +127,16 @@ void my_strncpy(char * s1, const char * s2, int num)
  */
 void my_strcat(char * s1, const char * s2) 
 {
-    
+     int count1;
+     int count2;
+  for (count1 = 0; s1[count1] != '\0'; count1++)
+    {
+    }
+  for(count2 = 0; s2[count2] != '\0'; count2++)
+    {
+      s1[count1] = s2[count2];
+      count1++;
+    }
 }
 
 /** 
@@ -125,7 +150,17 @@ void my_strcat(char * s1, const char * s2)
  */
 void my_strncat(char * s1, const char * s2, int num)
 {
-   
+  int count1;
+  int count2;
+  for (count1 = 0; s1[count1] != '\0'; count1++)
+    {
+    }
+  for(count2 = 0; count2 < num; count2++)
+    {
+      s1[count1] = s2[count2];
+      count1++;
+    } 
+  s1[count1] = '\0';
 }
 
 /**
@@ -139,8 +174,25 @@ void my_strncat(char * s1, const char * s2, int num)
  */
 
 const char *my_strstr(const char * s1, const char * s2)
-{
-    return NULL;
+{     
+  int count1;
+  int count2 = 0;
+  int pointer;
+
+  for (count1 = 0; (s1[count1] != s2[count2]) & (s1[count1] != '\0'); count1++)
+    {
+    }
+  pointer = count1;
+  for(count2 = 0; s2[count2] != '\0'; count2++)
+    {
+      if(s1[count1 - 1] != s2[count2])
+	{
+	  return NULL;
+	}
+      count1++;
+    }
+
+  return &pointer;
 }
 
 
@@ -173,7 +225,23 @@ const char *my_strstr(const char * s1, const char * s2)
  */
 void my_strinsert(char *s1, const char *s2, int pos)
 {
-  
+  int length1;
+  int length2;
+  for (length1 = 0; s1[length1] != '\0'; length1++)
+    {
+    }
+  for (length2 = 0; s2[length2] != '\0'; length2++)
+    {
+    }
+ while (length1 >= pos)
+   {
+     s1[length1 + length2] = s1[length1];
+     length1--;
+   }
+ for (length2 = 0; s2[length2] != '\0'; length2++)
+    {
+      s1[length2 + pos] = s2[length2];
+    }
 }
 
 /**
@@ -208,6 +276,11 @@ void my_strinsert(char *s1, const char *s2, int pos)
  */
 void my_strdelete(char *s, int pos, int length)
 {
-  
+  int count;
+  for (count = pos; s[count] != '\0'; count ++)
+    {
+      s[count] = s[count + length];
+    }
+  s[count] = '\0';
 }
 
