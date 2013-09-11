@@ -63,7 +63,7 @@
 int * readIntegers(const char * filename, int * numberOfIntegers)
 {
   FILE * input;
-  int count;
+  int placeholder;
   int count2 = 0;
   int * array; 
   input = fopen(filename, "r");
@@ -72,7 +72,7 @@ int * readIntegers(const char * filename, int * numberOfIntegers)
       return NULL;
     }
 
-  while(fscanf(input, "%d", &count) == 1)
+  while(fscanf(input, "%d", &placeholder) != EOF)
    {
      * numberOfIntegers = *numberOfIntegers + 1;
    }
@@ -80,10 +80,11 @@ int * readIntegers(const char * filename, int * numberOfIntegers)
 
   fseek(input, 0 , SEEK_SET);
 
-  for(count2 = 0; count2 < * numberOfIntegers; count2++)
+  while(count2 < * numberOfIntegers)
     {
-      fscanf(input, "%d", &count);
-      array[count2]=count;
+      fscanf(input, "%d", &placeholder);
+      array[count2]=placeholder;
+      count2++;
     }
   fclose(input);
 
@@ -141,30 +142,29 @@ int split(int * arr,int under, int over)
   {
     int left;
     int right;
-    int count;
-    int pivot;
-    pivot = under;
+    int index;
     left = under;
-    count = arr[under];
+    index = arr[under];
     right = over;
 
     while(left < right)
       {
-	while(arr[left] <= count)
-	  {
-	    left = left + 1;
-	  }
-	while(arr[right] > count)
+	while(arr[right] > index)
 	  {
 	    right = right - 1;
 	  }
+	while(arr[left] <= index)
+	  {
+	    left = left + 1;
+	  }
+
 	if(left  < right)
 	  {
 	    swapfunc(arr,left,right);
 	  }
       }
     arr[under] = arr[right];
-    arr[right] = count;
+    arr[right] = index;
 
     return(right);
   }
@@ -228,9 +228,33 @@ void sort(int * arr, int length)
  * }
  * return -1;
  */
+int helper(int * arr, int lowerbound, int upperbound, int key)
+{
+  if(lowerbound > upperbound)
+    {
+      return -1;
+    }
+
+  int indexvar = (lowerbound + upperbound)/2;
+
+  if (arr[indexvar] == key)
+    {
+      return indexvar;
+    }
+  if (arr[indexvar] > key)
+    {
+      return(helper(arr, lowerbound, indexvar - 1, key));
+    }
+  if (arr[indexvar] < key)
+    {
+      return(helper(arr, indexvar+1, upperbound,key));
+    }
+  return -1;
+}
+
 int search(int * arr, int length, int key)
 {
-    return -1;
+  return helper(arr,0,length,key);
 }
 
 
