@@ -62,33 +62,34 @@
 
 int * readIntegers(const char * filename, int * numberOfIntegers)
 {
-  FILE * input;
-  int placeholder;
-  int count2 = 0;
-  int * array; 
-  input = fopen(filename, "r");
-  if (input == NULL)
+  FILE * input; //Holds file array while searching for length
+  int placeholder; //placeholder for value compare when finding length and putting values in new array
+  int count2 = 0; //Keeps track of array index when inserting values
+  int * array; //array to store the contents of the opened file
+
+  input = fopen(filename, "r"); //initializes contact with file to be read
+  if (input == NULL) //Gives error if there is a problem connecting with the file
     {
       return NULL;
     }
 
-  while(fscanf(input, "%d", &placeholder) != EOF)
+  while(fscanf(input, "%d", &placeholder) != EOF) //Scans the file to get the length in order to produce an adaquete array length
    {
-     * numberOfIntegers = *numberOfIntegers + 1;
+     * numberOfIntegers = *numberOfIntegers + 1; //Index of length of array in file
    }
-  array = malloc((* numberOfIntegers) * sizeof(int));
+  array = malloc((* numberOfIntegers) * sizeof(int)); //Allocates memory for the array to be made
 
-  fseek(input, 0 , SEEK_SET);
+  fseek(input, 0 , SEEK_SET); //resets pointer of file back to index 0
 
-  while(count2 < * numberOfIntegers)
+  while(count2 < * numberOfIntegers) //places elements of file into new array
     {
       fscanf(input, "%d", &placeholder);
       array[count2]=placeholder;
       count2++;
     }
-  fclose(input);
+  fclose(input); //closes communications with the file
 
-    return array;
+  return array; //returns the values in the array
 }
 
 /**
@@ -129,7 +130,7 @@ int * readIntegers(const char * filename, int * numberOfIntegers)
  *
  */
 
-void swapfunc(int arr[], int x, int y)
+void swapfunc(int arr[], int x, int y) //swaps the values when needed for sorting
 {
   int temp;
   temp=arr[x];
@@ -138,7 +139,7 @@ void swapfunc(int arr[], int x, int y)
 }
 
 
-int split(int * arr,int under, int over)
+int split(int * arr,int under, int over) //divides the array into smaller chuncks in order to sort more quickly
   {
     int left;
     int right;
@@ -169,7 +170,7 @@ int split(int * arr,int under, int over)
     return(right);
   }
 
-void Sort1(int * arr, int pivot, int last)
+void Sort1(int * arr, int pivot, int last) //recursive file in order to use the quicksort function
 {
   int temp;
   if (pivot<last)
@@ -181,7 +182,7 @@ void Sort1(int * arr, int pivot, int last)
 }
 void sort(int * arr, int length)
 {
-  Sort1(arr, 0 , length-1);
+  Sort1(arr, 0 , length-1);//Calls the recursive function in order to quicksort
 }
 
 /**
@@ -230,22 +231,22 @@ void sort(int * arr, int length)
  */
 int helper(int * arr, int lowerbound, int upperbound, int key)
 {
-  if(lowerbound > upperbound)
+  if(lowerbound > upperbound) //returns -1 if the key is not found in the array
     {
       return -1;
     }
 
-  int indexvar = (lowerbound + upperbound)/2;
+  int indexvar = (lowerbound + upperbound)/2; //divides the array in half to make searching quickly
 
-  if (arr[indexvar] == key)
+  if (arr[indexvar] == key) //returns pointer if the key is found
     {
       return indexvar;
     }
-  if (arr[indexvar] > key)
+  if (arr[indexvar] > key) //searches lower half if key is less than value at pointer
     {
       return(helper(arr, lowerbound, indexvar - 1, key));
     }
-  if (arr[indexvar] < key)
+  if (arr[indexvar] < key) //searches upper half if key is greater than value at pointer
     {
       return(helper(arr, indexvar+1, upperbound,key));
     }
@@ -254,7 +255,7 @@ int helper(int * arr, int lowerbound, int upperbound, int key)
 
 int search(int * arr, int length, int key)
 {
-  return helper(arr,0,length,key);
+  return helper(arr,0,length,key); //Calls recursive function to find key
 }
 
 
