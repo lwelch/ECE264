@@ -127,9 +127,61 @@ int * readIntegers(const char * filename, int * numberOfIntegers)
  * sort.
  *
  */
+
+void swapfunc(int arr[], int x, int y)
+{
+  int temp;
+  temp=arr[x];
+  arr[x]=arr[y];
+  arr[y]=temp;
+}
+
+
+int split(int * arr,int under, int over)
+  {
+    int left;
+    int right;
+    int count;
+    int pivot;
+    pivot = under;
+    left = under;
+    count = arr[under];
+    right = over;
+
+    while(left < right)
+      {
+	while(arr[left] <= count)
+	  {
+	    left = left + 1;
+	  }
+	while(arr[right] > count)
+	  {
+	    right = right - 1;
+	  }
+	if(left  < right)
+	  {
+	    swapfunc(arr,left,right);
+	  }
+      }
+    arr[under] = arr[right];
+    arr[right] = count;
+
+    return(right);
+  }
+
+void Sort1(int * arr, int pivot, int last)
+{
+  int temp;
+  if (pivot<last)
+    {
+      temp=split(arr,pivot,last);
+      Sort1(arr,pivot,temp-1);
+      Sort1(arr,temp+1,last); 
+    }
+}
 void sort(int * arr, int length)
 {
-    
+  Sort1(arr, 0 , length-1);
 }
 
 /**
