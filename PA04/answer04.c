@@ -15,6 +15,7 @@
 #include "pa04.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 
 
@@ -196,11 +197,33 @@ void partitionDecreasing(int value)
  * The program should generate only valid partitions.  Do not
  * generates invalid partitions and checks validity before printing.
  */
+void partodd(int * part, int index, int left)
+{
+  int val;
+  if (left == 0)
+    {
+      printPartition(part, index);
+      return;
+    }
+  for (val = 1; val <= left;val++)
+    {
+      if(val % 2 == 1)
+	{
+	  part[index] = val;
+	  partodd(part, index + 1, left - val);
+	}
+    }
+}
 
 
 void partitionOdd(int value)
 {
   printf("partitionOdd %d\n", value);
+  int * arr;
+  arr = malloc(sizeof(int) * value);
+  partodd(arr, 0, value);
+  free(arr);
+  return;
   
 }
 
@@ -223,10 +246,31 @@ void partitionOdd(int value)
  * generates invalid partitions and checks validity before printing.
  */
 
+void parteven(int * part, int index, int left)
+{
+  int val;
+  if (left == 0)
+    {
+      printPartition(part, index);
+      return;
+    }
+  for (val = 1; val <= left;val++)
+    {
+      if(val % 2 == 0)
+	{
+	  part[index] = val;
+	  parteven(part, index + 1, left - val);
+	}
+    }
+}
 void partitionEven(int value)
 {
   printf("partitionEven %d\n", value);
-
+  int * arr;
+  arr = malloc(sizeof(int) * value);
+  parteven(arr, 0, value);
+  free(arr);
+  return;
 }
 
 /*
@@ -246,12 +290,44 @@ void partitionEven(int value)
  * The program should generate only valid partitions.  Do not
  * generates invalid partitions and checks validity before printing.
  */
+void partevenodd(int * part, int index, int left)
+{
+  int val;
+  if (left == 0)
+    {
+      printPartition(part, index);
+      return;
+    }
+  for (val = 1; val <= left;val++)
+    {
+      if(val % 2 == 1)
+	{
+	if(index % 2 ==0)
+	    {
+	      part[index] = val;
+	      partevenodd(part, index + 1, left - val);
+	    }
+	  }
+      if(val % 2 == 0)
+	{
+	  if(index % 2 ==1)
+	    {
+	      part[index] = val;
+	      partevenodd(part, index + 1, left - val);
+	    }
+	}
+    }
+}
 
 
 void partitionOddAndEven(int value)
 {
   printf("partitionOddAndEven %d\n", value);
-  
+  int * arr;
+  arr = malloc(sizeof(int) * value);
+  partevenodd(arr, 0, value);
+  free(arr);
+  return;
 }
 
 /*
@@ -270,10 +346,49 @@ void partitionOddAndEven(int value)
  * generates invalid partitions and checks validity before printing.
  */
 
+int isprime(int value)
+{
+  int index;
+  int prime;
+  for(index = 2; index < sqrt(value); index++)
+    {
+      if(value % index == 0)
+	{
+	  prime = 0;
+	  return (prime);
+	}
+      prime = 1;
+      return (prime);
+    }
+}
+
+void partprime(int * part, int ind, int left)
+{
+  int val;
+  int prime;
+  if (left == 0)
+    {
+      printPartition(part, ind);
+      return;
+    }
+  for (val = 1; val <= left; val ++)
+    {
+      prime = isprime(val);
+
+      if(prime == 1)
+	{
+	  part[ind] = val;
+	  partprime(part, ind + 1, left - val);
+	}
+    }
+}
 
 
 void partitionPrime(int value)
 {
   printf("partitionPrime %d\n", value);
-
+  int * arr;
+  arr = malloc(sizeof(int) * value);
+  partprime(arr, 0, value);
+  free(arr);
 }
