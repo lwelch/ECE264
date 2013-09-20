@@ -350,16 +350,17 @@ int isprime(int value)
 {
   int index;
   int prime;
-  for(index = 2; index < sqrt(value); index++)
+  for(index = 2; index <= sqrt(value); index++)
     {
       if(value % index == 0)
 	{
 	  prime = 0;
 	  return (prime);
 	}
-      prime = 1;
-      return (prime);
     }
+  // printf("prime number: %d\n", value);
+  prime = 1;
+  return (prime);
 }
 
 void partprime(int * part, int ind, int left)
@@ -371,7 +372,7 @@ void partprime(int * part, int ind, int left)
       printPartition(part, ind);
       return;
     }
-  for (val = 1; val <= left; val ++)
+  for (val = 2; val <= left; val ++)
     {
       prime = isprime(val);
 
