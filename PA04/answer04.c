@@ -142,12 +142,41 @@ void partitionIncreasing(int value)
  * generates invalid partitions and checks validity before printing.
  *
  */
+void partitiondec(int * part,int index,int left)
+{
+  int count = 0;
 
+  if (left == 0)
+    {
+      printPartition(part, index);
+    }
+
+  for (count = 1; count <= left; count++)
+    {
+      part[index] = count;
+      if (index == 0)
+	{	  
+	  partitiondec(part, index + 1, left - count);
+	}
+      if(index > 0)
+	{ 
+	  if(part[index - 1] > part[index])
+	    {
+	      partitiondec(part, index + 1, left - count);
+	    }
+	  
+	}
+    }
+}
 
 void partitionDecreasing(int value)
 {
   printf("partitionDecreasing %d\n", value);
-  
+  int * arr;
+  arr = malloc(sizeof(int) * value);
+  partitiondec(arr, 0, value);
+  free(arr);
+  return;
 
 }
 
