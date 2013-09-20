@@ -1,0 +1,83 @@
+commit 09bc6d2ee8d249c2aca2ef08460d8a5a4f10de26
+Author: lwelch <lwelch@purdue.edu>
+Date:   Wed Sep 11 19:13:15 2013 -0400
+
+    Updeated file with comments for submission.  All functions working correctly and all outputs are tested.  Valgrid producing no errors.
+
+commit 0fd06745d003127a611e6da541df6cf10a5b33ea
+Author: lwelch <lwelch@purdue.edu>
+Date:   Wed Sep 11 19:01:12 2013 -0400
+
+    Working Program.  All functions seem to be working fine.  Valgrind okay.  Search function working perfectly.
+
+commit 65d5914c4719bc431d3f958703ee4f8303652039
+Author: lwelch <lwelch@purdue.edu>
+Date:   Wed Sep 11 18:36:00 2013 -0400
+
+    Sort Function is working correctly.  Just need the Search func and done.
+
+commit f4e7a43b8cc8273209df37f58bc6053aad80737e
+Author: lwelch <lwelch@purdue.edu>
+Date:   Wed Sep 11 16:32:48 2013 -0400
+
+    Read functions works as expected.  Pulls array into element called array and returns it.
+
+commit 92b2d522167fe6f0d26e04064551c7df0ab015d5
+Author: lwelch <lwelch@purdue.edu>
+Date:   Thu Aug 29 22:35:15 2013 -0400
+
+    Program is working 100%. No errors or valgrind memory problems.
+
+commit 551d97d5a852c2e2f49168b83261863f2bd643e6
+Author: lwelch <lwelch@purdue.edu>
+Date:   Thu Aug 29 22:11:21 2013 -0400
+
+    All but strstr seem to work.  Not all cases tested though.
+
+commit ef4e9db92dfe3e93d6fefc764ab3564ce680fcf4
+Author: lwelch <lwelch@purdue.edu>
+Date:   Thu Aug 29 11:27:52 2013 -0400
+
+    First three functions working.
+
+commit 924a05fffc84f199c863839dfcb559af75506353
+Author: lwelch <lwelch@purdue.edu>
+Date:   Thu Aug 29 10:39:12 2013 -0400
+
+    Add the PA02 folder to the repository
+
+commit 4a501bd3f83db80eff0faa0f78655ba0586bec59
+Author: lwelch <lwelch@purdue.edu>
+Date:   Mon Aug 26 10:48:53 2013 -0400
+
+    Final file for submitting homework
+
+commit f25a368e3d1b94ec0636b20fbd7d9cc983d2fc40
+Author: lwelch <lwelch@purdue.edu>
+Date:   Thu Aug 22 14:32:40 2013 -0400
+
+    Working files.  Program seems to work correctly.  Needs testing to verify answers are correct..
+
+commit 88ec40a44b5385c080267fca4032a7b980f24569
+Author: lwelch <lwelch@purdue.edu>
+Date:   Thu Aug 22 14:03:53 2013 -0400
+
+    Working Program all 3 functions.
+
+commit 2fa7eac288d06110121a8d87cd4c7cc16202ddab
+Author: lwelch <lwelch@purdue.edu>
+Date:   Thu Aug 22 13:39:25 2013 -0400
+
+    Function 1 and 2 working.  Need 3rd function still. None coded
+
+commit d46449c561db998c156e9ddaf2579d2949e83b9c
+Author: lwelch <lwelch@purdue.edu>
+Date:   Thu Aug 22 00:51:02 2013 -0400
+
+    First commit
+
+commit e1f1768460b44a074f543d9113d0b15642b76e1f
+Author: Luke <lwelch@purdue.edu>
+Date:   Tue Aug 20 19:31:52 2013 -0700
+
+    Initial commit
