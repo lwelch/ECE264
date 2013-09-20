@@ -32,6 +32,8 @@
 void printPartition(int * part, int length)
 {
   int ind;
+
+  printf("= ");
   for (ind = 0; ind < length - 1; ind ++)
     {
       printf("%d + ", part[ind]);
@@ -82,30 +84,32 @@ void partitionAll(int value)
  *
  */
 
-void partitioninc(int * part, int ind, int left)
+
+void partitioninc(int * part, int index, int left)
 {
-  int val;
-  if (left == 0)
-    {
-      printPartition(part, ind);
-      return;
-    }
-  for (val = 1; val <= left; val ++)
-    {
-      part[ind] = val;
-      if (ind == 0);
-      {
-	partitioninc(part, ind + 1, left - val);
-      }
-      if (ind > 0)
+  int count = 0;
+
+      if (left == 0)
 	{
-	  if (part[ind] > part[ind - 1])
-	    {
-	      partitioninc(part, ind + 1, left - val);
-	    }
+	  printPartition(part, index);
 	}
 
-    }
+      for (count = 1; count <= left; count++)
+	{
+	  part[index] = count;
+      	  if (index == 0)
+	    {	  
+	      partitioninc(part, index + 1, left - count);
+	    }
+	  if(index > 0)
+	    { 
+	      if(part[index - 1] < part[index])
+	  	{
+	  	  partitioninc(part, index + 1, left - count);
+	  	}
+	  
+		}
+	}
 }
 
 void partitionIncreasing(int value)
