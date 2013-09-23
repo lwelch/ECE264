@@ -32,37 +32,37 @@
  */
 void printPartition(int * part, int length)
 {
-  int ind;
+  int count; //Counting variable to print the entire array
 
-  printf("= ");
-  for (ind = 0; ind < length - 1; ind ++)
+  printf("= "); //prints leading equal sign once.
+  for (count = 0; count < length - 1; count ++) //loop for printing all variable,s
     {
-      printf("%d + ", part[ind]);
+      printf("%d + ", part[count]); //prints variables and the + sign
     }
-  printf("%d\n", part[length - 1]);
+  printf("%d\n", part[length - 1]); //prints the last number in the array
 }
 void partition(int * part, int ind, int left)
 {
-  int val;
-  if (left == 0)
+  int val;  //counts the for loop to send value into the recursive fucntion
+  if (left == 0) //if the sum is the number expected, then this triggars the print function
     {
       printPartition(part, ind);
       return;
     }
-  for (val = 1; val <= left; val ++)
+  for (val = 1; val <= left; val ++)  //for loop to recursively call the partition function in order to find sums
     {
-      part[ind] = val;
+      part[ind] = val; //places the value of val in the partition function
       partition(part, ind + 1, left - val);
     }
 }
 
 void partitionAll(int value)
 {
-  int * arr;
-  arr = malloc(sizeof(int) * value);
+  int * arr; //initalizes an array to store sum values
+  arr = malloc(sizeof(int) * value); //allocates the max size the array can be
   printf("partitionAll %d\n", value);
-  partition(arr, 0, value);
-  free(arr);
+  partition(arr, 0, value); //calls the partition fucntion
+  free(arr); //frees the memory the array used.
   return;
   
 }
@@ -90,27 +90,29 @@ void partitioninc(int * part, int index, int left)
 {
   int count = 0;
 
-      if (left == 0)
-	{
-	  printPartition(part, index);
-	}
+  if (left == 0)
+    {
+      printPartition(part, index);
+    }
 
-      for (count = 1; count <= left; count++)
-	{
-	  part[index] = count;
-      	  if (index == 0)
-	    {	  
+  for (count = 1; count <= left; count++) 
+    {
+      part[index] = count; //places counter value in the array
+
+      if(index > 0) //loop for index greater than 1
+	{ 
+	  if(part[index - 1] < part[index]) //makes sure the next value is greater than the previous one.
+	    {
 	      partitioninc(part, index + 1, left - count);
 	    }
-	  if(index > 0)
-	    { 
-	      if(part[index - 1] < part[index])
-	  	{
-	  	  partitioninc(part, index + 1, left - count);
-	  	}
-	  
-		}
+	 
 	}
+    
+      if (index == 0) //if count is 0, make sure it indexs to 1 in next recurstion
+	{	  
+	  partitioninc(part, index + 1, left - count);
+	}
+    }
 }
 
 void partitionIncreasing(int value)
@@ -155,17 +157,18 @@ void partitiondec(int * part,int index,int left)
   for (count = 1; count <= left; count++)
     {
       part[index] = count;
-      if (index == 0)
-	{	  
-	  partitiondec(part, index + 1, left - count);
-	}
-      if(index > 0)
+     
+      if(index > 0) //if the index is greater than zero, this starts the loop
 	{ 
-	  if(part[index - 1] > part[index])
+	  if(part[index - 1] > part[index]) //makes sure the next value in the array is less than the one being placed now.
 	    {
 	      partitiondec(part, index + 1, left - count);
 	    }
 	  
+	}
+      if (index == 0)
+	{	  
+	  partitiondec(part, index + 1, left - count);
 	}
     }
 }
@@ -205,13 +208,10 @@ void partodd(int * part, int index, int left)
       printPartition(part, index);
       return;
     }
-  for (val = 1; val <= left;val++)
+  for (val = 1; val <= left;val=val+2) //by adding 2 instead of 1, this makes it use odd values only.
     {
-      if(val % 2 == 1)
-	{
-	  part[index] = val;
-	  partodd(part, index + 1, left - val);
-	}
+      part[index] = val;
+      partodd(part, index + 1, left - val);
     }
 }
 
@@ -254,13 +254,10 @@ void parteven(int * part, int index, int left)
       printPartition(part, index);
       return;
     }
-  for (val = 1; val <= left;val++)
+  for (val = 2; val <= left;val=val+2)//By adding 2 to val instead of 1 and by starting this loop at 2 instead of 1, this now uses only even values to populate the array.
     {
-      if(val % 2 == 0)
-	{
-	  part[index] = val;
-	  parteven(part, index + 1, left - val);
-	}
+      part[index] = val;
+      parteven(part, index + 1, left - val);
     }
 }
 void partitionEven(int value)
@@ -300,17 +297,17 @@ void partevenodd(int * part, int index, int left)
     }
   for (val = 1; val <= left;val++)
     {
-      if(val % 2 == 1)
+      if(val % 2 == 1)  //check if val is odd
 	{
-	if(index % 2 ==0)
+	  if(index % 2 ==0) //if val is odd, this make sure the index of the array is even.  
 	    {
 	      part[index] = val;
 	      partevenodd(part, index + 1, left - val);
 	    }
 	  }
-      if(val % 2 == 0)
+      if(val % 2 == 0) //checks if val is even
 	{
-	  if(index % 2 ==1)
+	  if(index % 2 ==1) //if val is even, this make sure the index is an odd spot.
 	    {
 	      part[index] = val;
 	      partevenodd(part, index + 1, left - val);
@@ -349,34 +346,30 @@ void partitionOddAndEven(int value)
 int isprime(int value)
 {
   int index;
-  int prime;
-  for(index = 2; index <= sqrt(value); index++)
+  for(index = 2; index <= sqrt(value); index++) //index to check all possible 
     {
-      if(value % index == 0)
-	{
-	  prime = 0;
-	  return (prime);
+      if(value % index == 0) //checks for factors of the number
+	{ 
+	  return (0); //returns a false value if not a prime number
 	}
     }
-  // printf("prime number: %d\n", value);
-  prime = 1;
-  return (prime);
+  return (1); //returns a true value if it is a prime number
 }
 
 void partprime(int * part, int ind, int left)
 {
   int val;
   int prime;
-  if (left == 0)
+  if (left == 0) 
     {
       printPartition(part, ind);
       return;
     }
-  for (val = 2; val <= left; val ++)
+  for (val = 2; val <= left; val ++) //starts checking loop.  starts at 2 because 1 is not a prime number, but passes isprime function
     {
-      prime = isprime(val);
+      prime = isprime(val); //checks to see if the number is prime or not
 
-      if(prime == 1)
+      if(prime == 1) //if the number is prime, this enters the recursive call
 	{
 	  part[ind] = val;
 	  partprime(part, ind + 1, left - val);
