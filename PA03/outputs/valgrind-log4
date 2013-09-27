@@ -1,133 +1,133 @@
-==13543== Memcheck, a memory error detector
-==13543== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
-==13543== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
-==13543== Command: ./pa03 inputs/input4
-==13543== Parent PID: 13534
-==13543== 
---13543-- 
---13543-- Valgrind options:
---13543--    --tool=memcheck
---13543--    --leak-check=full
---13543--    --verbose
---13543--    --log-file=outputs/valgrind-log4
---13543-- Contents of /proc/version:
---13543--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
---13543-- Arch and hwcaps: AMD64, amd64-sse3-cx16
---13543-- Page sizes: currently 4096, max supported 4096
---13543-- Valgrind library directory: /usr/lib64/valgrind
---13543-- Reading syms from /home/shay/a/lwelch/ECE264/solutions/ECE264/PA03/pa03
---13543-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
---13543--    object doesn't have a dynamic symbol table
---13543-- Reading syms from /lib64/ld-2.12.so
---13543-- Scheduler: using generic scheduler lock implementation.
---13543-- Reading suppressions file: /usr/lib64/valgrind/default.supp
-==13543== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-13543-by-lwelch-on-ecelinux41.ecn.purdue.edu
-==13543== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-13543-by-lwelch-on-ecelinux41.ecn.purdue.edu
-==13543== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-13543-by-lwelch-on-ecelinux41.ecn.purdue.edu
-==13543== 
-==13543== TO CONTROL THIS PROCESS USING vgdb (which you probably
-==13543== don't want to do, unless you know exactly what you're doing,
-==13543== or are doing some strange experiment):
-==13543==   /usr/lib64/valgrind/../../bin/vgdb --pid=13543 ...command...
-==13543== 
-==13543== TO DEBUG THIS PROCESS USING GDB: start GDB like this
-==13543==   /path/to/gdb ./pa03
-==13543== and then give GDB the following command
-==13543==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=13543
-==13543== --pid is optional if only one valgrind process is running
-==13543== 
---13543-- REDIR: 0x3e96417520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
---13543-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
---13543-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
---13543-- REDIR: 0x3e96417390 (index) redirected to 0x4a07bf0 (index)
---13543-- REDIR: 0x3e96417410 (strcmp) redirected to 0x4a08530 (strcmp)
---13543-- Reading syms from /lib64/libc-2.12.so
---13543-- REDIR: 0x3e96884ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---13543-- REDIR: 0x3e96887180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---13543-- REDIR: 0x3e96882e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
---13543-- REDIR: 0x3e9687f8d0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
---13543-- REDIR: 0x3e96927ac0 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
---13543-- REDIR: 0x3e9687a8e0 (malloc) redirected to 0x4a0696c (malloc)
---13543-- REDIR: 0x3e9687b710 (free) redirected to 0x4a06369 (free)
---13543-- REDIR: 0x3e9688ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
-==13543== Invalid read of size 4
-==13543==    at 0x400B20: helper (answer03.c:241)
-==13543==    by 0x400B8D: helper (answer03.c:251)
-==13543==    by 0x400BC4: search (answer03.c:258)
-==13543==    by 0x400ED2: main (pa03.c:99)
-==13543==  Address 0x4c382c4 is 0 bytes after a block of size 4 alloc'd
-==13543==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
-==13543==    by 0x4008CB: readIntegers (answer03.c:80)
-==13543==    by 0x400DF4: main (pa03.c:76)
-==13543== 
-==13543== Invalid read of size 4
-==13543==    at 0x400B39: helper (answer03.c:245)
-==13543==    by 0x400B8D: helper (answer03.c:251)
-==13543==    by 0x400BC4: search (answer03.c:258)
-==13543==    by 0x400ED2: main (pa03.c:99)
-==13543==  Address 0x4c382c4 is 0 bytes after a block of size 4 alloc'd
-==13543==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
-==13543==    by 0x4008CB: readIntegers (answer03.c:80)
-==13543==    by 0x400DF4: main (pa03.c:76)
-==13543== 
-==13543== Invalid read of size 4
-==13543==    at 0x400B6D: helper (answer03.c:249)
-==13543==    by 0x400B8D: helper (answer03.c:251)
-==13543==    by 0x400BC4: search (answer03.c:258)
-==13543==    by 0x400ED2: main (pa03.c:99)
-==13543==  Address 0x4c382c4 is 0 bytes after a block of size 4 alloc'd
-==13543==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
-==13543==    by 0x4008CB: readIntegers (answer03.c:80)
-==13543==    by 0x400DF4: main (pa03.c:76)
-==13543== 
---13543-- REDIR: 0x3e96881350 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
---13543-- REDIR: 0x3e968846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
-==13543== 
-==13543== HEAP SUMMARY:
-==13543==     in use at exit: 0 bytes in 0 blocks
-==13543==   total heap usage: 2 allocs, 2 frees, 572 bytes allocated
-==13543== 
-==13543== All heap blocks were freed -- no leaks are possible
-==13543== 
-==13543== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 6 from 6)
-==13543== 
-==13543== 1 errors in context 1 of 3:
-==13543== Invalid read of size 4
-==13543==    at 0x400B6D: helper (answer03.c:249)
-==13543==    by 0x400B8D: helper (answer03.c:251)
-==13543==    by 0x400BC4: search (answer03.c:258)
-==13543==    by 0x400ED2: main (pa03.c:99)
-==13543==  Address 0x4c382c4 is 0 bytes after a block of size 4 alloc'd
-==13543==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
-==13543==    by 0x4008CB: readIntegers (answer03.c:80)
-==13543==    by 0x400DF4: main (pa03.c:76)
-==13543== 
-==13543== 
-==13543== 1 errors in context 2 of 3:
-==13543== Invalid read of size 4
-==13543==    at 0x400B39: helper (answer03.c:245)
-==13543==    by 0x400B8D: helper (answer03.c:251)
-==13543==    by 0x400BC4: search (answer03.c:258)
-==13543==    by 0x400ED2: main (pa03.c:99)
-==13543==  Address 0x4c382c4 is 0 bytes after a block of size 4 alloc'd
-==13543==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
-==13543==    by 0x4008CB: readIntegers (answer03.c:80)
-==13543==    by 0x400DF4: main (pa03.c:76)
-==13543== 
-==13543== 
-==13543== 1 errors in context 3 of 3:
-==13543== Invalid read of size 4
-==13543==    at 0x400B20: helper (answer03.c:241)
-==13543==    by 0x400B8D: helper (answer03.c:251)
-==13543==    by 0x400BC4: search (answer03.c:258)
-==13543==    by 0x400ED2: main (pa03.c:99)
-==13543==  Address 0x4c382c4 is 0 bytes after a block of size 4 alloc'd
-==13543==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
-==13543==    by 0x4008CB: readIntegers (answer03.c:80)
-==13543==    by 0x400DF4: main (pa03.c:76)
-==13543== 
---13543-- 
---13543-- used_suppression:      4 U1004-ARM-_dl_relocate_object
---13543-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
-==13543== 
-==13543== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 6 from 6)
+==8746== Memcheck, a memory error detector
+==8746== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==8746== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==8746== Command: ./pa03 inputs/input4
+==8746== Parent PID: 8737
+==8746== 
+--8746-- 
+--8746-- Valgrind options:
+--8746--    --tool=memcheck
+--8746--    --leak-check=full
+--8746--    --verbose
+--8746--    --log-file=outputs/valgrind-log4
+--8746-- Contents of /proc/version:
+--8746--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
+--8746-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--8746-- Page sizes: currently 4096, max supported 4096
+--8746-- Valgrind library directory: /usr/lib64/valgrind
+--8746-- Reading syms from /home/shay/a/lwelch/ECE264/solutions/ECE264/PA03/pa03
+--8746-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--8746--    object doesn't have a dynamic symbol table
+--8746-- Reading syms from /lib64/ld-2.12.so
+--8746-- Scheduler: using generic scheduler lock implementation.
+--8746-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==8746== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-8746-by-lwelch-on-ecelinux41.ecn.purdue.edu
+==8746== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-8746-by-lwelch-on-ecelinux41.ecn.purdue.edu
+==8746== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-8746-by-lwelch-on-ecelinux41.ecn.purdue.edu
+==8746== 
+==8746== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==8746== don't want to do, unless you know exactly what you're doing,
+==8746== or are doing some strange experiment):
+==8746==   /usr/lib64/valgrind/../../bin/vgdb --pid=8746 ...command...
+==8746== 
+==8746== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==8746==   /path/to/gdb ./pa03
+==8746== and then give GDB the following command
+==8746==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=8746
+==8746== --pid is optional if only one valgrind process is running
+==8746== 
+--8746-- REDIR: 0x3e96417520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--8746-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--8746-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--8746-- REDIR: 0x3e96417390 (index) redirected to 0x4a07bf0 (index)
+--8746-- REDIR: 0x3e96417410 (strcmp) redirected to 0x4a08530 (strcmp)
+--8746-- Reading syms from /lib64/libc-2.12.so
+--8746-- REDIR: 0x3e96884ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--8746-- REDIR: 0x3e96887180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--8746-- REDIR: 0x3e96882e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--8746-- REDIR: 0x3e9687f8d0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--8746-- REDIR: 0x3e96927ac0 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
+--8746-- REDIR: 0x3e9687a8e0 (malloc) redirected to 0x4a0696c (malloc)
+--8746-- REDIR: 0x3e9687b710 (free) redirected to 0x4a06369 (free)
+--8746-- REDIR: 0x3e9688ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+==8746== Invalid read of size 4
+==8746==    at 0x400B20: helper (answer03.c:241)
+==8746==    by 0x400B8D: helper (answer03.c:251)
+==8746==    by 0x400BC4: search (answer03.c:258)
+==8746==    by 0x400ED2: main (pa03.c:99)
+==8746==  Address 0x4c382c4 is 0 bytes after a block of size 4 alloc'd
+==8746==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==8746==    by 0x4008CB: readIntegers (answer03.c:80)
+==8746==    by 0x400DF4: main (pa03.c:76)
+==8746== 
+==8746== Invalid read of size 4
+==8746==    at 0x400B39: helper (answer03.c:245)
+==8746==    by 0x400B8D: helper (answer03.c:251)
+==8746==    by 0x400BC4: search (answer03.c:258)
+==8746==    by 0x400ED2: main (pa03.c:99)
+==8746==  Address 0x4c382c4 is 0 bytes after a block of size 4 alloc'd
+==8746==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==8746==    by 0x4008CB: readIntegers (answer03.c:80)
+==8746==    by 0x400DF4: main (pa03.c:76)
+==8746== 
+==8746== Invalid read of size 4
+==8746==    at 0x400B6D: helper (answer03.c:249)
+==8746==    by 0x400B8D: helper (answer03.c:251)
+==8746==    by 0x400BC4: search (answer03.c:258)
+==8746==    by 0x400ED2: main (pa03.c:99)
+==8746==  Address 0x4c382c4 is 0 bytes after a block of size 4 alloc'd
+==8746==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==8746==    by 0x4008CB: readIntegers (answer03.c:80)
+==8746==    by 0x400DF4: main (pa03.c:76)
+==8746== 
+--8746-- REDIR: 0x3e96881350 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
+--8746-- REDIR: 0x3e968846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
+==8746== 
+==8746== HEAP SUMMARY:
+==8746==     in use at exit: 0 bytes in 0 blocks
+==8746==   total heap usage: 2 allocs, 2 frees, 572 bytes allocated
+==8746== 
+==8746== All heap blocks were freed -- no leaks are possible
+==8746== 
+==8746== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 6 from 6)
+==8746== 
+==8746== 1 errors in context 1 of 3:
+==8746== Invalid read of size 4
+==8746==    at 0x400B6D: helper (answer03.c:249)
+==8746==    by 0x400B8D: helper (answer03.c:251)
+==8746==    by 0x400BC4: search (answer03.c:258)
+==8746==    by 0x400ED2: main (pa03.c:99)
+==8746==  Address 0x4c382c4 is 0 bytes after a block of size 4 alloc'd
+==8746==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==8746==    by 0x4008CB: readIntegers (answer03.c:80)
+==8746==    by 0x400DF4: main (pa03.c:76)
+==8746== 
+==8746== 
+==8746== 1 errors in context 2 of 3:
+==8746== Invalid read of size 4
+==8746==    at 0x400B39: helper (answer03.c:245)
+==8746==    by 0x400B8D: helper (answer03.c:251)
+==8746==    by 0x400BC4: search (answer03.c:258)
+==8746==    by 0x400ED2: main (pa03.c:99)
+==8746==  Address 0x4c382c4 is 0 bytes after a block of size 4 alloc'd
+==8746==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==8746==    by 0x4008CB: readIntegers (answer03.c:80)
+==8746==    by 0x400DF4: main (pa03.c:76)
+==8746== 
+==8746== 
+==8746== 1 errors in context 3 of 3:
+==8746== Invalid read of size 4
+==8746==    at 0x400B20: helper (answer03.c:241)
+==8746==    by 0x400B8D: helper (answer03.c:251)
+==8746==    by 0x400BC4: search (answer03.c:258)
+==8746==    by 0x400ED2: main (pa03.c:99)
+==8746==  Address 0x4c382c4 is 0 bytes after a block of size 4 alloc'd
+==8746==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==8746==    by 0x4008CB: readIntegers (answer03.c:80)
+==8746==    by 0x400DF4: main (pa03.c:76)
+==8746== 
+--8746-- 
+--8746-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--8746-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==8746== 
+==8746== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 6 from 6)
