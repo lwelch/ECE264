@@ -174,27 +174,28 @@ char * * readString(char * filename, int * numString)
       return NULL;
     }
 
-   while(fgets(buf, MAXIMUM_LENGTH, input) != NULL) //Scans the file to get the length in order to produce an adaquete array length
+  while(fgets(buf, MAXIMUM_LENGTH, input) != NULL) //Scans the file to get the length in order to produce an adaquete array length
     {
       count1++; //Index of length of array in file
     }
-   *numString = count1;
-    array = malloc((* numString) * sizeof(char*)); //Allocates memory for the array to be made
-    for(count = 0;count < *numString; count++)
-      {
-	array[count]=malloc(sizeof(char) * (MAXIMUM_LENGTH));
-      }
+  *numString = count1;
+  array = malloc((* numString) * sizeof(char*)); //Allocates memory for the array to be made
+  for(count = 0;count < *numString; count++)
+    {
+      array[count]=malloc(sizeof(char) * (MAXIMUM_LENGTH));
+    }
 
-     fseek(input, 0 , SEEK_SET); //resets pointer of file back to index 0
+  fseek(input, 0 , SEEK_SET); //resets pointer of file back to index 0
 
   while(count2 < * numString) //places elements of file into new array
     {
       fgets(array[count2], MAXIMUM_LENGTH, input);
       count2++;
-      }
+    }
+
     fclose(input); //closes communications with the file
     
-  return array; //returns the values in the array
+    return array; //returns the values in the array
 }
 /* ----------------------------------------------- */
 /*
@@ -221,6 +222,12 @@ void printString(char * * arrString, int numString)
   for(count = 0; count < numString; count++)
     {
       printf("%s", arrString[count]);
+      int len = strlen(arrString[count]);    
+
+      if(len == 0 || arrString[count][len-1] != '\n')
+
+	printf("\n");
+
     }
 
 }
@@ -316,6 +323,11 @@ int saveString(char * filename, char * * arrString, int numString)
   for (counter = 0;counter < numString;counter++)
     {
       fprintf(fout, "%s", arrString[counter]);
+      int len = strlen(arrString[counter]);    
+
+      if(len == 0 || arrString[counter][len-1] != '\n')
+
+	fprintf(fout,"\n", arrString[counter+1]);
     }
   fclose(fout);
 
