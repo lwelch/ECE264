@@ -176,13 +176,11 @@ struct Image * loadImage(const char* filename)
   fptr = fopen(filename, "r");
   if(fptr == NULL)
     {     
-      printf("\nfailed in load image\n");
       return NULL;
     }
   headercheck = fread(&headerarr, sizeof(struct ImageHeader), 1, fptr);
   if (headercheck != 1 || headerarr.magic_bits != ECE264_IMAGE_MAGIC_BITS || headerarr.width <= 0 || headerarr.height <= 0 || headerarr.comment_len <= 0)
     {
-      printf("\n failed in headercheck\n\n");
       fclose(fptr);
       return NULL;
     }
@@ -190,57 +188,22 @@ struct Image * loadImage(const char* filename)
   img->width = headerarr.width;
   img->height = headerarr.height;
 
-  /*
-  if(comment == NULL)
-  {
-      fclose(fptr);
-      free(headerarr);
-      free(comment);
-      return NULL;
-  }
-  */
   img->comment = malloc(sizeof(char)*headerarr.comment_len);
   img -> data = malloc(sizeof(uint8_t) * headerarr.width * headerarr.height);
   commentcheck = fread(img->comment, sizeof(char), headerarr.comment_len, fptr);
-  /*if(commentcheck != 1)
-    {
-      fclose(fptr);
-      free(headerarr);
-      free(comment);
-    }
 
-  if(img == NULL)
-    {
-      fclose(fptr);
-      free(headerarr);
-      free(comment);
-      free(img);
-      return NULL;
-    }
-  */
   imgcheck = fread(img->data, headerarr.width*sizeof(uint8_t),headerarr.height,fptr);
-  /*if(imgcheck != height)
-    {
-      fclose(fptr);
-      free(headerarr);
-      free(comment);
-      free(img);
-      return NULL;
-    }
-  */
+
   end = malloc(sizeof(uint8_t));
   endcheck = fread(end, sizeof(uint8_t),1,fptr);
   free(end);
-  //printf("image check = %d\n\n",imgcheck);
   if(endcheck == 1|| imgcheck!= headerarr.height || img == NULL || commentcheck != 1 || img->comment == NULL)
     {
-      printf("\nfaild in last if\n\n");
       fclose(fptr);
       free(img);
       free(end);
       return NULL;
     }
-   printf("got to end of read function\n");
   return img;
 
 }
@@ -294,14 +257,11 @@ void linearNormalization(struct Image * image)
   int max = 0;
   int min = 255;
   int datapoints = image->width * image->height;
-  //printf("\n\nmax = %d min = %d datapoints = %d count = %d\n\n ", max, min, datapoints, count);
 
   for(count = 0;count < datapoints; count++)
   {
-    //printf("datapointcheck = %d count = %d", image->data[count], count);
     if(image->data[count] > max)
       {
-	//printf("datapoint = %d", image->data[count]);
 	max = image->data[count];
       }
     if(image->data[count] < min)
@@ -309,7 +269,6 @@ void linearNormalization(struct Image * image)
 	min = image->data[count];
       }
   }
-  //printf("\n\nmax = %d min = %d datapoints = %d\n\n ", max, min, datapoints);
   for(count = 0; count < datapoints; count++)
     {
       image->data[count] = ((image->data[count] - min) * 255.0) / (max - min);
