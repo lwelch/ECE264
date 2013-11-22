@@ -1,0 +1,76 @@
+==25666== Memcheck, a memory error detector
+==25666== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==25666== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==25666== Command: ./pa06 images/05-unnormalized-sagan-stamp.ee264 valgrind/valout
+==25666== Parent PID: 25630
+==25666== 
+--25666-- 
+--25666-- Valgrind options:
+--25666--    --leak-check=full
+--25666--    --verbose
+--25666--    --log-file=valgrind/valgrindlog1
+--25666-- Contents of /proc/version:
+--25666--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
+--25666-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--25666-- Page sizes: currently 4096, max supported 4096
+--25666-- Valgrind library directory: /usr/lib64/valgrind
+--25666-- Reading syms from /home/shay/a/lwelch/ECE264/solutions/ECE264/PA06/pa06
+--25666-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--25666--    object doesn't have a dynamic symbol table
+--25666-- Reading syms from /lib64/ld-2.12.so
+--25666-- Scheduler: using generic scheduler lock implementation.
+--25666-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==25666== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-25666-by-lwelch-on-ecelinux05.ecn.purdue.edu
+==25666== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-25666-by-lwelch-on-ecelinux05.ecn.purdue.edu
+==25666== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-25666-by-lwelch-on-ecelinux05.ecn.purdue.edu
+==25666== 
+==25666== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==25666== don't want to do, unless you know exactly what you're doing,
+==25666== or are doing some strange experiment):
+==25666==   /usr/lib64/valgrind/../../bin/vgdb --pid=25666 ...command...
+==25666== 
+==25666== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==25666==   /path/to/gdb ./pa06
+==25666== and then give GDB the following command
+==25666==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=25666
+==25666== --pid is optional if only one valgrind process is running
+==25666== 
+--25666-- REDIR: 0x318d417520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--25666-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--25666-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--25666-- REDIR: 0x318d417390 (index) redirected to 0x4a07bf0 (index)
+--25666-- REDIR: 0x318d417410 (strcmp) redirected to 0x4a08530 (strcmp)
+--25666-- Reading syms from /lib64/libc-2.12.so
+--25666-- REDIR: 0x318d884ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--25666-- REDIR: 0x318d887180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--25666-- REDIR: 0x318d882e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--25666-- REDIR: 0x318d87f8d0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--25666-- REDIR: 0x318d927ac0 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
+--25666-- REDIR: 0x318d87a8e0 (malloc) redirected to 0x4a0696c (malloc)
+--25666-- REDIR: 0x318d889860 (memcpy) redirected to 0x4a08b20 (memcpy)
+--25666-- REDIR: 0x318d87b710 (free) redirected to 0x4a06369 (free)
+--25666-- REDIR: 0x318d88ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+--25666-- REDIR: 0x318d8846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
+==25666== 
+==25666== HEAP SUMMARY:
+==25666==     in use at exit: 568 bytes in 1 blocks
+==25666==   total heap usage: 7 allocs, 6 frees, 308,534 bytes allocated
+==25666== 
+==25666== Searching for pointers to 1 not-freed blocks
+==25666== Checked 1,113,104 bytes
+==25666== 
+==25666== LEAK SUMMARY:
+==25666==    definitely lost: 0 bytes in 0 blocks
+==25666==    indirectly lost: 0 bytes in 0 blocks
+==25666==      possibly lost: 0 bytes in 0 blocks
+==25666==    still reachable: 568 bytes in 1 blocks
+==25666==         suppressed: 0 bytes in 0 blocks
+==25666== Reachable blocks (those to which a pointer was found) are not shown.
+==25666== To see them, rerun with: --leak-check=full --show-reachable=yes
+==25666== 
+==25666== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--25666-- 
+--25666-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--25666-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==25666== 
+==25666== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)

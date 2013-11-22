@@ -1,0 +1,86 @@
+==17189== Memcheck, a memory error detector
+==17189== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==17189== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==17189== Command: ./pa07 inputs/input10_A inputs/input10_B
+==17189== Parent PID: 17188
+==17189== 
+--17189-- 
+--17189-- Valgrind options:
+--17189--    --leak-check=full
+--17189--    --verbose
+--17189--    --log-file=valgrind/valgrindlog1
+--17189-- Contents of /proc/version:
+--17189--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
+--17189-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--17189-- Page sizes: currently 4096, max supported 4096
+--17189-- Valgrind library directory: /usr/lib64/valgrind
+--17189-- Reading syms from /home/shay/a/lwelch/ECE264/solutions/ECE264/PA07/pa07
+--17189-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--17189--    object doesn't have a dynamic symbol table
+--17189-- Reading syms from /lib64/ld-2.12.so
+--17189-- Scheduler: using generic scheduler lock implementation.
+--17189-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==17189== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-17189-by-lwelch-on-ecelinux42.ecn.purdue.edu
+==17189== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-17189-by-lwelch-on-ecelinux42.ecn.purdue.edu
+==17189== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-17189-by-lwelch-on-ecelinux42.ecn.purdue.edu
+==17189== 
+==17189== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==17189== don't want to do, unless you know exactly what you're doing,
+==17189== or are doing some strange experiment):
+==17189==   /usr/lib64/valgrind/../../bin/vgdb --pid=17189 ...command...
+==17189== 
+==17189== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==17189==   /path/to/gdb ./pa07
+==17189== and then give GDB the following command
+==17189==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=17189
+==17189== --pid is optional if only one valgrind process is running
+==17189== 
+--17189-- REDIR: 0x353ac17520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--17189-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--17189-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--17189-- REDIR: 0x353ac17390 (index) redirected to 0x4a07bf0 (index)
+--17189-- REDIR: 0x353ac17410 (strcmp) redirected to 0x4a08530 (strcmp)
+--17189-- Reading syms from /lib64/libc-2.12.so
+--17189-- REDIR: 0x353b084ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--17189-- REDIR: 0x353b087180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--17189-- REDIR: 0x353b082e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--17189-- REDIR: 0x353b07a8e0 (malloc) redirected to 0x4a0696c (malloc)
+--17189-- REDIR: 0x353b07b710 (free) redirected to 0x4a06369 (free)
+--17189-- REDIR: 0x353b081350 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
+--17189-- REDIR: 0x353b0846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
+--17189-- REDIR: 0x353b08ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+==17189== 
+==17189== HEAP SUMMARY:
+==17189==     in use at exit: 32 bytes in 2 blocks
+==17189==   total heap usage: 91 allocs, 89 frees, 2,736 bytes allocated
+==17189== 
+==17189== Searching for pointers to 2 not-freed blocks
+==17189== Checked 64,920 bytes
+==17189== 
+==17189== 32 bytes in 2 blocks are definitely lost in loss record 1 of 1
+==17189==    at 0x4A069EE: malloc (vg_replace_malloc.c:270)
+==17189==    by 0x400EDD: List_copy (answer07.c:216)
+==17189==    by 0x400F19: List_copy (answer07.c:223)
+==17189==    by 0x400F19: List_copy (answer07.c:223)
+==17189==    by 0x400F19: List_copy (answer07.c:223)
+==17189==    by 0x400F19: List_copy (answer07.c:223)
+==17189==    by 0x400F19: List_copy (answer07.c:223)
+==17189==    by 0x400F19: List_copy (answer07.c:223)
+==17189==    by 0x400F19: List_copy (answer07.c:223)
+==17189==    by 0x400F19: List_copy (answer07.c:223)
+==17189==    by 0x400F19: List_copy (answer07.c:223)
+==17189==    by 0x400F19: List_copy (answer07.c:223)
+==17189== 
+==17189== LEAK SUMMARY:
+==17189==    definitely lost: 32 bytes in 2 blocks
+==17189==    indirectly lost: 0 bytes in 0 blocks
+==17189==      possibly lost: 0 bytes in 0 blocks
+==17189==    still reachable: 0 bytes in 0 blocks
+==17189==         suppressed: 0 bytes in 0 blocks
+==17189== 
+==17189== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)
+--17189-- 
+--17189-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--17189-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==17189== 
+==17189== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 6 from 6)

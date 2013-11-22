@@ -1,0 +1,133 @@
+GCC = gcc
+CFLAGS = -g -Wall -Wshadow
+LIBS = 
+SOURCES	= answer07.c pa07.c
+
+.DEFAULT_GOAL := build
+
+build: pa07
+
+test: test0 test1 test2 test3 test4 test5 test6 test7 test8 test9 test10
+
+test0: pa07
+	@./pa07 inputs/input0_A inputs/input0_B > outputs/output0
+	@diff outputs/output0 expected/expected0
+	@echo ""
+	@echo "test 0 case okay"
+	@valgrind --leak-check=full --verbose --log-file=valgrind/valgrindlog1 ./pa07 inputs/input0_A inputs/input0_B > valgrind/valout0
+	@echo "Valgrind Okay!"
+	@echo ""
+
+test1: pa07
+	@./pa07 inputs/input1_A inputs/input1_B > outputs/output01
+	@diff outputs/output01 expected/expected1
+	@echo ""
+	@echo "test 1 case okay"
+	@valgrind --leak-check=full --verbose --log-file=valgrind/valgrindlog1 ./pa07 inputs/input1_A inputs/input1_B > valgrind/valout1
+	@echo "Valgrind Okay!"
+	@echo ""
+
+test2: pa07
+	@./pa07 inputs/input2_A inputs/input2_B  > outputs/output02
+	@diff outputs/output02 expected/expected2
+	@echo ""
+	@echo "test 2 case okay"
+	@valgrind --leak-check=full --verbose --log-file=valgrind/valgrindlog1 ./pa07 inputs/input1_A inputs/input1_B > valgrind/valout2
+	@echo "Valgrind Okay!"
+	@echo ""
+
+test3: pa07
+	@./pa07 inputs/input3_A inputs/input3_B >  outputs/output03
+	@diff outputs/output03 expected/expected3
+	@echo ""
+	@echo "test 3 case okay"
+	@valgrind --leak-check=full --verbose --log-file=valgrind/valgrindlog1 ./pa07 inputs/input3_A inputs/input3_B > valgrind/valout3
+	@echo "Valgrind Okay!"
+	@echo ""
+
+test4: pa07
+	@./pa07 inputs/input4_A inputs/input4_B > outputs/output04
+	@diff outputs/output04 expected/expected4
+	@echo ""
+	@echo "test 4 case okay"
+	@valgrind --leak-check=full --verbose --log-file=valgrind/valgrindlog1 ./pa07 inputs/input4_A inputs/input4_B > valgrind/valout
+	@echo "Valgrind Okay!"
+	@echo ""
+
+test5: pa07
+	@./pa07 inputs/input5_A inputs/input5_B > outputs/output05
+	@diff outputs/output05 expected/expected5
+	@echo ""
+	@echo "test 5 case okay"
+	@valgrind --leak-check=full --verbose --log-file=valgrind/valgrindlog1 ./pa07 inputs/input5_A inputs/input5_B > valgrind/valout
+	@echo "Valgrind Okay!"
+	@echo ""
+
+test6: pa07
+	@./pa07 inputs/input6_A inputs/input6_B > outputs/output06
+	@diff outputs/output06 expected/expected6
+	@echo ""
+	@echo "test 6 case okay"
+	@echo ""
+	@valgrind --leak-check=full --verbose --log-file=valgrind/valgrindlog1 ./pa07 inputs/input6_A inputs/input6_B > valgrind/valout6
+	@echo "Valgrind Okay!"
+	@echo ""
+
+test7: pa07
+	@./pa07 inputs/input7_A inputs/input7_B > outputs/output07
+	@diff outputs/output07 expected/expected7
+	@echo ""
+	@echo "test 7 case okay"
+	@echo ""
+	@valgrind --leak-check=full --verbose --log-file=valgrind/valgrindlog1 ./pa07 inputs/input7_A inputs/input7_B > valgrind/valout7
+	@echo "Valgrind Okay!"
+	@echo ""
+
+test8: pa07
+	@./pa07 inputs/input8_A inputs/input8_B > outputs/output08
+	@diff outputs/output08 expected/expected8
+	@echo ""
+	@echo "test 8 case okay"
+	@echo ""
+	@valgrind --leak-check=full --verbose --log-file=valgrind/valgrindlog1 ./pa07 inputs/input8_A inputs/input8_B > valgrind/valout8
+	@echo "Valgrind Okay!"
+	@echo ""
+
+test9: pa07
+	@./pa07 inputs/input9_A inputs/input9_B > outputs/output09
+	@diff outputs/output09 expected/expected9
+	@echo ""
+	@echo "test 9 case okay"
+	@echo ""
+	@valgrind --leak-check=full --verbose --log-file=valgrind/valgrindlog1 ./pa07 inputs/input9_A inputs/input9_B > valgrind/valout9
+	@echo "Valgrind Okay!"
+	@echo ""
+
+test10: pa07
+	@./pa07 inputs/input10_A inputs/input10_B > outputs/output010
+	@diff outputs/output010 expected/expected10
+	@echo ""
+	@echo "test 10 case okay"
+	@echo ""
+	@valgrind --leak-check=full --verbose --log-file=valgrind/valgrindlog1 ./pa07 inputs/input10_A inputs/input10_B > valgrind/valout10
+	@echo "Valgrind Okay!"
+	@echo ""
+
+environment:
+	@cd $(CURDIR)
+	@mkdir -p outputs
+	@mkdir -p obj
+	@mkdir -p valgrind
+
+pa07: answer07.o pa07.o | environment
+	$(GCC) $(CFLAGS) pa07.o answer07.o -o pa07
+
+pa07.o: pa07.c pa07.h | environment
+	$(GCC) $(CFLAGS) -c pa07.c
+
+answer07.o: answer07.c pa07.h | environment
+	$(GCC) $(CFLAGS) -c answer07.c
+
+clean:
+	@cd $(CURDIR)
+	rm -rf pa07 obj outputs

@@ -1,0 +1,68 @@
+==24640== Memcheck, a memory error detector
+==24640== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==24640== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==24640== Command: ./pa05 i ./inputs/10-intinput outputs/10-intinput.out
+==24640== Parent PID: 24622
+==24640== 
+--24640-- 
+--24640-- Valgrind options:
+--24640--    --tool=memcheck
+--24640--    --leak-check=full
+--24640--    --verbose
+--24640--    --log-file=outputs/valgrind-log10
+--24640-- Contents of /proc/version:
+--24640--   Linux version 2.6.32-358.18.1.el6.x86_64 (mockbuild@x86-003.build.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) ) #1 SMP Fri Aug 2 17:04:38 EDT 2013
+--24640-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--24640-- Page sizes: currently 4096, max supported 4096
+--24640-- Valgrind library directory: /usr/lib64/valgrind
+--24640-- Reading syms from /home/shay/a/lwelch/ECE264/solutions/ECE264/PA05/pa05
+--24640-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--24640--    object doesn't have a dynamic symbol table
+--24640-- Reading syms from /lib64/ld-2.12.so
+--24640-- Scheduler: using generic scheduler lock implementation.
+--24640-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==24640== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-24640-by-lwelch-on-ecelinux09.ecn.purdue.edu
+==24640== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-24640-by-lwelch-on-ecelinux09.ecn.purdue.edu
+==24640== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-24640-by-lwelch-on-ecelinux09.ecn.purdue.edu
+==24640== 
+==24640== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==24640== don't want to do, unless you know exactly what you're doing,
+==24640== or are doing some strange experiment):
+==24640==   /usr/lib64/valgrind/../../bin/vgdb --pid=24640 ...command...
+==24640== 
+==24640== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==24640==   /path/to/gdb ./pa05
+==24640== and then give GDB the following command
+==24640==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=24640
+==24640== --pid is optional if only one valgrind process is running
+==24640== 
+--24640-- REDIR: 0x3c36c17520 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--24640-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--24640-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--24640-- REDIR: 0x3c36c17390 (index) redirected to 0x4a07bf0 (index)
+--24640-- REDIR: 0x3c36c17410 (strcmp) redirected to 0x4a08530 (strcmp)
+--24640-- Reading syms from /lib64/libc-2.12.so
+--24640-- REDIR: 0x3c37084ec0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--24640-- REDIR: 0x3c37087180 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--24640-- REDIR: 0x3c37082e30 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--24640-- REDIR: 0x3c3707f8d0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--24640-- REDIR: 0x3c37127ac0 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
+--24640-- REDIR: 0x3c3707a8e0 (malloc) redirected to 0x4a0696c (malloc)
+--24640-- REDIR: 0x3c3707b710 (free) redirected to 0x4a06369 (free)
+--24640-- REDIR: 0x3c3708ace0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+--24640-- REDIR: 0x3c37081350 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
+--24640-- REDIR: 0x3c370846f0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
+--24640-- REDIR: 0x3c37089860 (memcpy) redirected to 0x4a08b20 (memcpy)
+==24640== 
+==24640== HEAP SUMMARY:
+==24640==     in use at exit: 0 bytes in 0 blocks
+==24640==   total heap usage: 3 allocs, 3 frees, 1,180 bytes allocated
+==24640== 
+==24640== All heap blocks were freed -- no leaks are possible
+==24640== 
+==24640== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--24640-- 
+--24640-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--24640-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==24640== 
+==24640== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
