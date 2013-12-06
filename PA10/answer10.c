@@ -1,4 +1,3 @@
-
 #include "pa10.h"
 #include "tree.h"
 #include <stdio.h>
@@ -13,8 +12,7 @@
  */
 Stack * Stack_create()
 {
-  Stack * node = NULL;
-  node = malloc(sizeof(Stack));
+  Stack * node = malloc(sizeof(Stack));
   node->list = NULL;
   return node;
 }
@@ -24,16 +22,6 @@ Stack * Stack_create()
  * Don't forget that you _must_ free the entire contained linked-list.
  * Also, you must safely to _nothing_ if stack == NULL. 
  */
-void list_destroy(ListNode * list)
-{
-  if(list == NULL)
-    {
-      return;
-    }
-  list_destroy(list -> next);
-  free(list);
-  return;
-}
 
 void Stack_destroy(Stack * stack)
 {
@@ -41,8 +29,16 @@ void Stack_destroy(Stack * stack)
     {
       return;
     }
-  list_destroy(stack -> list);
-  free(stack);
+  if(stack -> list == NULL)
+    {
+      free(stack);
+      return;
+    }
+  ListNode * top = stack->list;
+  stack->list = top->next;
+  free(top);
+  Stack_destroy(stack);
+  return;
 }
 
 /**
@@ -54,10 +50,7 @@ int Stack_isEmpty(Stack * stack)
     {
       return TRUE;
     }
-  else
-    {
-      return FALSE;
-    }
+  return FALSE;
 }
 
 /**
@@ -69,15 +62,11 @@ int Stack_isEmpty(Stack * stack)
  */
 int Stack_pop(Stack * stack)
 {
-  if(stack == NULL || stack -> list == NULL)
-    {
-      return -1;
-    }
 
-  ListNode * top = stack -> list;
-  int val = top -> value;
-  stack -> list = top -> next;
-  free(top);
+  ListNode * pop = stack -> list;
+  int val = pop -> value;
+  stack -> list = pop -> next;
+  free(pop);
   return val;
 }
 
@@ -90,18 +79,12 @@ int Stack_pop(Stack * stack)
  */
 void Stack_push(Stack * stack, int value)
 {
-  if(stack == NULL || stack -> list == NULL)
-    {
-      return;
-    }
+  ListNode * push = malloc(sizeof(ListNode));
 
-  ListNode * node = NULL;
-  node = malloc(sizeof(ListNode));
-
-  node -> value = value;
-  node -> next = stack -> list;
-  stack -> list = node;
-
+  push -> value = value;
+  push -> next = stack -> list;
+  stack -> list = push;
+  return;
 }
 
 /**
@@ -124,41 +107,43 @@ void Stack_push(Stack * stack, int value)
  * is stack-sortable. You can find files full of stack-sortable and
  * stack-unsortable arrays in the 'expected' folder.
  */
+
 void stackSort(int * array, int len)
 {
-  int ind = 0;
+
+  int printind = 0;
   Stack * stack = NULL;
   stack = Stack_create();
-  int count = 0;
-  ListNode * list;
+  int count = 1;
+  ListNode * top;
   int val;
 
-  Stack_push(stack, array[ind]);
+  Stack_push(stack, array[printind]);
   while(count < len)
     {
-      list = stack -> list;
-      if (array[count] < list ->value)
+      top = stack -> list;
+      if (array[count] < top->value)
 	{
 	  Stack_push(stack, array[count]);
 	}
       else
 	{
-	  while ((array[count] > list -> value) && (stack->list != NULL))
+	  while ((array[count] > top -> value) && (stack->list != NULL))
 	    {
 	      val = Stack_pop(stack);
-	      array[ind] = val;
-	      ind++;
+	      array[printind] = val;
+	      printind++;
 	    }
 	  Stack_push(stack,array[count]);
 	}
-      count ++;
+      count++;
     }
 
   while(stack->list != NULL)
     {
       val = Stack_pop(stack);
-      array[ind] = val;
-      ind++;
+      array[printind] = val;
+      printind++;
     }
 
   Stack_destroy(stack);
@@ -251,6 +236,7 @@ int isStackSortable(int * array, int len)
  * directory.
  */
 
+
 void swap(int * a, int * b)
 {
   int temp;
@@ -271,12 +257,12 @@ void permute(int * arr, int ind, int len)
 	{
 	  TreeNode * tn = Tree_build(arr, len);
 	  Tree_printShape(tn);
-	  Tree_destory(tn);
+	  Tree_destroy(tn);
 	}
       return;
     }
 
-  for(i=ind+1;i<len;i++)
+  for(i=ind;i<len;i++)
     {
       swap(&arr[i],&arr[ind]);
       permute(arr,ind+1,len);
@@ -286,16 +272,12 @@ void permute(int * arr, int ind, int len)
 
 void genShapes(int k)
 {
-  int array[k];
+  int values[k];
   int count;
 
   for(count = 0;count < k;count++)
     {
-      array[count]=count;
+      values[count]=count;
     }
-  permute(array,0,k);
+  permute(values,0,k);
 }
-
-
-
-

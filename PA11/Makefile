@@ -1,10 +1,10 @@
 GCC = gcc
 CFLAGS = -g -Wall -Wshadow
-OBJS = answer10.o pa10.o tree.o
-HDRS = pa10.h tree.h
+OBJS = answer11.o pa11.o
+HDRS = pa11.h
 VALGRIND = valgrind --tool=memcheck --leak-check=full --verbose
 
-pa10: $(OBJS) $(HDRS)
+pa11: $(OBJS) $(HDRS)
 	$(GCC) $(CFLAGS) $(OBJS) -o $@
 
 .c.o:

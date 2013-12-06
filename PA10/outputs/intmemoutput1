@@ -1,0 +1,70 @@
+==6237== Memcheck, a memory error detector
+==6237== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==6237== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==6237== Command: ./pa10 sort 321
+==6237== Parent PID: 6234
+==6237== 
+--6237-- 
+--6237-- Valgrind options:
+--6237--    --tool=memcheck
+--6237--    --leak-check=full
+--6237--    --verbose
+--6237--    --log-file=outputs/intmemoutput1
+--6237-- Contents of /proc/version:
+--6237--   Linux version 2.6.32-431.el6.x86_64 (mockbuild@x86-023.build.eng.bos.redhat.com) (gcc version 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) ) #1 SMP Sun Nov 10 22:19:54 EST 2013
+--6237-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--6237-- Page sizes: currently 4096, max supported 4096
+--6237-- Valgrind library directory: /usr/lib64/valgrind
+--6237-- Reading syms from /home/shay/a/lwelch/ECE264/solutions/ECE264/PA10/pa10
+--6237-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--6237--    object doesn't have a dynamic symbol table
+--6237-- Reading syms from /lib64/ld-2.12.so
+--6237-- Scheduler: using generic scheduler lock implementation.
+--6237-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==6237== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-6237-by-lwelch-on-ecelinux34.ecn.purdue.edu
+==6237== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-6237-by-lwelch-on-ecelinux34.ecn.purdue.edu
+==6237== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-6237-by-lwelch-on-ecelinux34.ecn.purdue.edu
+==6237== 
+==6237== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==6237== don't want to do, unless you know exactly what you're doing,
+==6237== or are doing some strange experiment):
+==6237==   /usr/lib64/valgrind/../../bin/vgdb --pid=6237 ...command...
+==6237== 
+==6237== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==6237==   /path/to/gdb ./pa10
+==6237== and then give GDB the following command
+==6237==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=6237
+==6237== --pid is optional if only one valgrind process is running
+==6237== 
+--6237-- REDIR: 0x3ba5617530 (strlen) redirected to 0x38049551 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--6237-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--6237-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--6237-- REDIR: 0x3ba56173a0 (index) redirected to 0x4a07bf0 (index)
+--6237-- REDIR: 0x3ba5617420 (strcmp) redirected to 0x4a08530 (strcmp)
+--6237-- Reading syms from /lib64/libc-2.12.so
+--6237-- REDIR: 0x3ba5a84fb0 (strcasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--6237-- REDIR: 0x3ba5a87270 (strncasecmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--6237-- REDIR: 0x3ba5a82f20 (__GI_strrchr) redirected to 0x4a07a70 (__GI_strrchr)
+--6237-- REDIR: 0x3ba5a7f9c0 (strcmp) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--6237-- REDIR: 0x3ba5b28590 (__strcmp_sse42) redirected to 0x4a08490 (strcmp)
+--6237-- REDIR: 0x3ba5a81400 (strlen) redirected to 0x480155c (_vgnU_ifunc_wrapper)
+--6237-- REDIR: 0x3ba5b33860 (__strlen_sse42) redirected to 0x4a07f50 (strlen)
+--6237-- REDIR: 0x3ba5a81440 (__GI_strlen) redirected to 0x4a07f70 (__GI_strlen)
+--6237-- REDIR: 0x3ba5a7a920 (malloc) redirected to 0x4a0696c (malloc)
+--6237-- REDIR: 0x3ba5a89950 (memcpy) redirected to 0x4a08b20 (memcpy)
+--6237-- REDIR: 0x3ba5a847e0 (mempcpy) redirected to 0x4a09f80 (mempcpy)
+--6237-- REDIR: 0x3ba5a7b800 (free) redirected to 0x4a06369 (free)
+--6237-- REDIR: 0x3ba5a8add0 (strchrnul) redirected to 0x4a09f10 (strchrnul)
+==6237== 
+==6237== HEAP SUMMARY:
+==6237==     in use at exit: 0 bytes in 0 blocks
+==6237==   total heap usage: 6 allocs, 6 frees, 72 bytes allocated
+==6237== 
+==6237== All heap blocks were freed -- no leaks are possible
+==6237== 
+==6237== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
+--6237-- 
+--6237-- used_suppression:      4 U1004-ARM-_dl_relocate_object
+--6237-- used_suppression:      2 glibc-2.5.x-on-SUSE-10.2-(PPC)-2a
+==6237== 
+==6237== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 6 from 6)
